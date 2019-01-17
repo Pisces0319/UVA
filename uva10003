@@ -1,0 +1,72 @@
+#include <bits/stdc++.h>
+
+
+using namespace std ;
+
+	int L ;
+	int N ;
+	int cost[1001][1001] ;
+	int cut[51] ;
+
+int dp(int l, int r)
+	{
+		bool check = 0 ;
+
+		if(cost[l][r] != 1e9)
+		{
+			return cost[l][r];
+		}
+
+		for(int i=0; i<N; i++)
+		{
+			if(cut[i] > l && cut[i] <r)
+			{
+				check = 1 ;
+				cost[l][r] = min(cost[l][r], dp(l, cut[i]) + dp(cut[i], r) + r - l) ;
+			}	
+		}
+		if(!check)
+		{
+			cost[l][r] = 0 ;
+		}
+
+		return cost[l][r];
+
+	}
+
+
+
+int main()
+{
+
+	
+
+	while(~scanf("%d",&L))
+	{
+		if(L == 0 )
+			break;
+
+		cin >> N ;
+		
+		for(int i=0; i<N; i++)
+		{
+			cin >> cut[i] ; 
+
+		}
+
+		for(int i=0; i<1001; i++)
+		{
+			for(int j=0; j<1001; j++)
+			{
+				cost[i][j] = 1e9 ;
+			}
+		}
+
+		
+
+		cout << dp(0,L) << endl ;
+	} 
+
+	return 0 ;
+}
+
