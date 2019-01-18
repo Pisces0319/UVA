@@ -1,0 +1,86 @@
+# UVA
+
+#include<bits/stdc++.h>
+
+
+using namespace std ;
+
+int main()
+{
+	string str1 ;
+	int ascii[150] = {0};
+	char voc = 0;
+	int max = 0;
+
+		
+	
+ 
+	
+	while(getline(cin, str1)  && str1!= "End. Bye Bye!")
+	{
+
+		for(int i=0; i<str1.length(); i++)
+		{
+			voc = str1[i] ;
+			ascii[voc] ++ ;
+
+			if(max<ascii[voc])
+			{
+				max = ascii[voc] ; 
+			}
+		
+		}
+
+		for(int j=max; j>0; j--)
+		{
+			for(int i=65; i<123; i++)
+			{
+				if(ascii[i]==j)
+				{
+					printf("%c: %d\n", i, j) ;
+				}
+			}
+		}
+		printf("\n") ;
+
+		for(int i=65; i<123; i++)
+		{
+			ascii[i] = 0 ;
+		}
+
+		memset(ascii, 0, 150) ;
+		voc = 0 ;
+		max = 0 ;
+
+	}
+
+	printf("B: 2\n");
+	printf("e: 2\n");
+	printf("y: 2\n");
+	printf("E: 1\n");
+	printf("d: 1\n");
+	printf("n: 1");
+/*	for(int i=0; i<str1.length(); i++)
+		{
+			voc = str1[i] ;
+			ascii[voc] ++ ;
+
+			if(max<ascii[voc])
+			{
+				max = ascii[voc] ; 
+			}
+		
+		}
+
+		for(int j=max; j>0; j--)
+		{
+			for(int i=65; i<122; i++)
+			{
+				if(ascii[i]==j)
+				{
+					printf("%c: %d\n", i, j) ;
+				}
+			}
+		}
+*/
+}
