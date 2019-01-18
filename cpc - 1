@@ -1,0 +1,53 @@
+# UVA
+
+#include<bits/stdc++.h>
+
+
+using namespace std ;
+
+int main()
+{
+	int n ;
+	int cas = 0 ;
+	string str ;
+	string tar ;
+	string sou ;
+	string ans ; 
+	bool check = 0 ; 
+
+	cin >> n ;
+
+	for(int i=0; i<n; i++)
+	{
+		bool check = 0 ;
+		cin >> str ;
+		cin >>  tar >> sou ;
+		for(int j=0; j<str.length(); j++)
+		{
+			if(str.substr(j,tar.length()) == tar)
+			{
+				check = 1 ;
+				str = str.substr(0, j) + sou + str.substr(j+tar.length(),str.length()-j-tar.length()) ;
+
+				
+			}
+
+		}
+
+		    ++cas ;
+
+		if(check==1)
+		{
+			printf("Case %d:\n",cas) ;
+
+			cout << str << endl ;
+			cout << str.length() << endl ;
+			cout << str.substr(str.length()/3, (str.length()/3)) <<  endl ;
+		}
+		else{
+			printf("Case %d:\n",cas) ;
+			cout<<"not found!"<<endl;
+		}
+
+	}
+}
